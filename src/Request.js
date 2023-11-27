@@ -5,7 +5,7 @@ const requests = {
   requestPopular: `${baseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`,
   requestTopRated: `${baseUrl}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`,
   requestTrending: `${baseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=2`,
-  requestHorror: `${baseUrl}/search/movie/?api_key=${apiKey}&language=en-US&page=1`,
+  requestHorror: `${baseUrl}/search/movie?api_key=${apiKey}&language=en-US&query=horror&page=1&include_adult=false`,
   requestUpComing: `${baseUrl}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`,
 };
 

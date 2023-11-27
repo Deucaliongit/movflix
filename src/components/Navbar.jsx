@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
-  let links = [
-    { name: "Home", link: "/" },
-    { name: "Movie", link: "/" },
-    { name: "TV", link: "/" },
-    { name: "Serial", link: "/" },
-  ];
-  const handleNav = () => {
-    setNav(!nav);
-  };
+  // let links = [
+  //   { name: "Home", link: "/" },
+  //   { name: "Movie", link: "/" },
+  //   { name: "TV", link: "/" },
+  //   { name: "Serial", link: "/" },
+  // ];
+  // const handleNav = () => {
+  //   setNav(!nav);
+  // };
 
   return (
     <nav className="w-full flex items-center justify-between p-6 z-[100] absolute">
-      <h1 className="text-red-600 text-4xl font-bold cursor-pointer lg:pl-16">
-        MOVFLIX
-      </h1>
+      <Link to="/">
+        <h1 className="text-red-600 text-4xl font-bold cursor-pointer lg:pl-16">
+          MOVFLIX
+        </h1>
+      </Link>
+
       <div className="flex items-center lg:pr-24">
-        <button className="text-white pr-4 font-semibold">Sign</button>
-        <button className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold">
-          Sign Up
-        </button>
+        <Link to="/login">
+          <button className="text-white pr-4 font-semibold">Sign</button>
+        </Link>
+        <Link to="/signup">
+          <button className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold">
+            Sign Up
+          </button>
+        </Link>
       </div>
 
       {/* {nav ? (
