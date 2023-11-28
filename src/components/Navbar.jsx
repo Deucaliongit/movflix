@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/Auth.context";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const navigate = useNavigate();
+  const { user, logOut } = UserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(user);
 
   // let links = [
   //   { name: "Home", link: "/" },
@@ -23,17 +37,30 @@ const Navbar = () => {
           MOVFLIX
         </h1>
       </Link>
-
-      <div className="flex items-center lg:pr-24">
-        <Link to="/login">
-          <button className="text-white pr-4 font-semibold">Sign</button>
-        </Link>
-        <Link to="/signup">
-          <button className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold">
-            Sign Up
+      {user?.email ? (
+        <div className="flex items-center lg:pr-24">
+          <Link to="/account">
+            <button className="text-white pr-4 font-semibold">Account</button>
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold"
+          >
+            Logout
           </button>
-        </Link>
-      </div>
+        </div>
+      ) : (
+        <div className="flex items-center lg:pr-24">
+          <Link to="/login">
+            <button className="text-white pr-4 font-semibold">Sign</button>
+          </Link>
+          <Link to="/signup">
+            <button className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold">
+              Sign Up
+            </button>
+          </Link>
+        </div>
+      )}
 
       {/* {nav ? (
         <div className="flex flex-col-2 px-4 justify-between items-center">
