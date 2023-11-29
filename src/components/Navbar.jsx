@@ -31,9 +31,9 @@ const Navbar = () => {
   // };
 
   return (
-    <nav className="w-full flex items-center justify-between px-4 p-2 lg:p-6 z-[100] absolute">
+    <nav className="w-full flex items-center justify-between px-4 p-4 lg:p-6 z-[100] absolute">
       <Link to="/">
-        <h1 className="text-red-600 md:text-4xl font-bold cursor-pointer lg:pl-10">
+        <h1 className="text-red-600 text-xl md:text-4xl font-bold cursor-pointer lg:pl-10">
           MOVFLIX
         </h1>
       </Link>
