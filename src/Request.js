@@ -3,6 +3,7 @@ const baseUrl = "https://api.themoviedb.org/3";
 
 const requests = {
   requestPopular: `${baseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`,
+  requestTrendingWeek: `${baseUrl}/trending/movie/week?api_key=${apiKey}`,
   requestTopRated: `${baseUrl}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`,
   requestTrending: `${baseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=2`,
   requestHorror: `${baseUrl}/search/movie?api_key=${apiKey}&language=en-US&query=anime&page=1&include_adult=false`,

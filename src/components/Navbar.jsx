@@ -31,20 +31,22 @@ const Navbar = () => {
   // };
 
   return (
-    <nav className="w-full flex items-center justify-between p-6 z-[100] absolute">
+    <nav className="w-full flex items-center justify-between px-4 p-2 lg:p-6 z-[100] absolute">
       <Link to="/">
-        <h1 className="text-red-600 text-4xl font-bold cursor-pointer lg:pl-10">
+        <h1 className="text-red-600 md:text-4xl font-bold cursor-pointer lg:pl-10">
           MOVFLIX
         </h1>
       </Link>
       {user?.email ? (
         <div className="flex items-center lg:pr-24">
           <Link to="/account">
-            <button className="text-white pr-4 font-semibold">Account</button>
+            <button className="text-sm text-white pr-4 font-semibold">
+              Account
+            </button>
           </Link>
           <button
             onClick={handleLogout}
-            className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold"
+            className="bg-red-600 py-1 lg:py-2 text-sm text-white cursor-pointer rounded-sm px-2 lg:px-6 font-semibold"
           >
             Logout
           </button>
@@ -52,10 +54,12 @@ const Navbar = () => {
       ) : (
         <div className="flex items-center lg:pr-24">
           <Link to="/login">
-            <button className="text-white pr-4 font-semibold">Sign</button>
+            <button className="text-sm text-white pr-4 font-semibold">
+              Sign
+            </button>
           </Link>
           <Link to="/signup">
-            <button className="bg-red-600 py-2 text-white cursor-pointer rounded-sm px-6 font-semibold">
+            <button className="bg-red-600 py-1 lg:py-2 text-sm text-white cursor-pointer rounded-sm px-2 lg:px-6 font-semibold">
               Sign Up
             </button>
           </Link>

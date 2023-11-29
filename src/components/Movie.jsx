@@ -34,15 +34,34 @@ const Movie = ({ item, id }) => {
       alert("Please log in to save a movie");
     }
   };
+  console.log(item);
   return (
     <div
       key={id}
-      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[320px] inline-block cursor-pointer p-1 relative"
+      className="w-[170px] sm:w-[200px] md:w-[240px] lg:w-[250px] inline-block cursor-pointer p-1 relative"
     >
       <img
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
         alt={item?.title}
       />
+      <h1 className="text-red-600 text-xl lg:text-lg absolute top-1 left-2 font-bold">
+        M
+      </h1>
+      <div className="flex justify-center items-center text-center">
+        {item?.release_date > "2023-10-12" && (
+          <h1 className="absolute bottom-1 w-[80px] bg-red-700 font-semibold text-xs py-0.3 rounded-t text-white">
+            Just added
+          </h1>
+        )}
+      </div>
+      <div className="flex justify-center text-center">
+        {item?.release_date > "2023-10-12" && item?.vote_count > 500 && (
+          <h1 className="absolute top-1 w-[30px] right-1 bg-red-600 font-bold text-[10px] py-0.5 px 0.5 text-white">
+            TOP
+            <p>10</p>
+          </h1>
+        )}
+      </div>
       <div className="absolute w-full h-full top-0 left-0 hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
           {truncateString(item?.title, 30)}
