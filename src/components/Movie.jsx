@@ -11,6 +11,14 @@ const Movie = ({ item, id }) => {
 
   const movieID = doc(db, "users", `${user?.email}`);
 
+  const truncateString = (str, num) => {
+    if (str?.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+  };
+
   const saveShow = async () => {
     if (user?.email) {
       setLike(!like);
@@ -29,7 +37,7 @@ const Movie = ({ item, id }) => {
   return (
     <div
       key={id}
-      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer p-2 relative"
+      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[320px] inline-block cursor-pointer p-1 relative"
     >
       <img
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
@@ -37,7 +45,8 @@ const Movie = ({ item, id }) => {
       />
       <div className="absolute w-full h-full top-0 left-0 hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
-          {item?.title}
+          {truncateString(item?.title, 30)}
+          {truncateString(item?.name, 30)}
         </p>
         <p onClick={saveShow}>
           {like ? (

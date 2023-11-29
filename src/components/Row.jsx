@@ -24,25 +24,27 @@ const Row = ({ title, fetchURL, rowId }) => {
 
   return (
     <>
-      <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
-      <div className="relative flex items-center group">
-        <MdChevronLeft
-          onClick={slideLeft}
-          className="bg-white left-2 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-          size={30}
-        />
-        <div
-          id={"slider" + rowId}
-          className="w-full h-full overflow-x-scroll whitespace-nowrap scrollbar-hide scroll-smooth relative"
-        >
-          {movies &&
-            movies.map((item, id) => <Movie key={id} id={id} item={item} />)}
+      <div className="px-4 lg:px-10 py-2">
+        <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
+        <div className="relative flex items-center group">
+          <MdChevronLeft
+            onClick={slideLeft}
+            className="bg-white left-2 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+            size={30}
+          />
+          <div
+            id={"slider" + rowId}
+            className="w-full h-full overflow-x-scroll whitespace-nowrap scrollbar-hide scroll-smooth relative"
+          >
+            {movies &&
+              movies.map((item, id) => <Movie key={id} id={id} item={item} />)}
+          </div>
+          <MdChevronRight
+            onClick={slideRight}
+            className="bg-white right-2 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+            size={30}
+          />
         </div>
-        <MdChevronRight
-          onClick={slideRight}
-          className="bg-white right-2 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-          size={30}
-        />
       </div>
     </>
   );

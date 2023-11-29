@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav className="w-full flex items-center justify-between p-6 z-[100] absolute">
       <Link to="/">
-        <h1 className="text-red-600 text-4xl font-bold cursor-pointer lg:pl-16">
+        <h1 className="text-red-600 text-4xl font-bold cursor-pointer lg:pl-10">
           MOVFLIX
         </h1>
       </Link>

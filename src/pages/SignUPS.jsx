@@ -1,21 +1,31 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/Auth.context";
+import Loading from "../components/Loading";
 
 const SignUPS = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { user, signUp } = UserAuth();
 
   const handleSbumbit = async (e) => {
     e.preventDefault();
-    try {
-      await signUp(email, password);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
+    setIsLoading(true); // Set loading state saat formulir dikirim
+
+    // Tambahkan waktu jeda (contoh: 1 detik)
+    const delayTime = 2000; // 1 detik
+    setTimeout(async () => {
+      try {
+        await signUp(email, password);
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false); // Reset loading state setelah formulir selesai dikirim
+      }
+    }, delayTime);
   };
   return (
     <>
@@ -36,20 +46,26 @@ const SignUPS = () => {
               >
                 <input
                   onChange={(e) => setEmail(e.target.value)}
-                  className="p-3 my-2 bg-gray-500 rounded"
+                  className="p-3 my-2 bg-gray-800 rounded focus:outline-none"
                   type="email"
                   placeholder="email"
                   autoComplete="email"
+                  required
                 />
                 <input
                   onChange={(e) => setPassword(e.target.value)}
-                  className="p-3 my-2 bg-gray-500 rounded"
+                  className="p-3 my-2 bg-gray-800 rounded focus:outline-none"
                   type="password"
                   placeholder="password"
                   autoComplete="curren-password"
+                  required
                 />
-                <button className="bg-red-600 p-2 my-6 rounded font-bold">
-                  Sign Up
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="bg-red-600 p-2 my-6 rounded font-bold"
+                >
+                  {isLoading ? <Loading /> : "Sign Up"}
                 </button>
                 <div className="flex justify-between items-center text-sm text-gray-600">
                   <p>
